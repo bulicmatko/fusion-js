@@ -1,0 +1,93 @@
+{
+	"requireCurlyBraces": [
+		"if",
+		"else",
+		"for",
+		"while",
+		"do",
+		"try",
+		"catch"
+	],
+	"requireSpaceAfterKeywords": [
+		"if",
+		"else",
+		"for",
+		"while",
+		"do",
+		"switch",
+		"case",
+		"return",
+		"try",
+		"catch",
+		"function",
+		"typeof"
+	],
+	"requireSpacesInAnonymousFunctionExpression": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInNamedFunctionExpression": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInFunctionExpression": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInFunctionDeclaration": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpaceBeforeBlockStatements": true,
+	"requireParenthesesAroundIIFE": true,
+	"requireSpacesInConditionalExpression": true,
+	"disallowSpacesInsideArrayBrackets": true,
+	"disallowSpacesInsideParentheses": true,
+	"requireCommaBeforeLineBreak": true,
+	"requireSpaceBeforeBinaryOperators": true,
+	"requireSpaceAfterBinaryOperators": true,
+	"validateLineBreaks": "LF",
+	"disallowMultipleLineBreaks": true,
+	"validateQuoteMarks": "'",
+	"validateIndentation": "\t",
+	"disallowMixedSpacesAndTabs": true,
+	"disallowTrailingWhitespace": true,
+	"disallowTrailingComma": true,
+	"maximumLineLength": {
+		"value": 150,
+		"tabSize": 4,
+		"allowComments": true,
+		"allowUrlComments": true,
+		"allowRegex": true
+	},
+	"disallowSpacesInsideObjectBrackets": true,
+	"requireSpaceAfterLineComment": true,
+	"disallowKeywordsOnNewLine": [
+		"else",
+		"catch"
+	],
+	"requireCapitalizedConstructors": true,
+	"disallowSpaceAfterPrefixUnaryOperators": true,
+	"disallowSpaceBeforePostfixUnaryOperators": true,
+	"requireBlocksOnNewline": 1,
+	"disallowEmptyBlocks": true,
+	"disallowSpaceAfterObjectKeys": true,
+	"requireCamelCaseOrUpperCaseIdentifiers": true,
+	"disallowKeywords": [ "with" ],
+	"requireLineFeedAtFileEnd": true,
+	"requireDotNotation": true,
+	"disallowYodaConditions": true,
+	"requireOperatorBeforeLineBreak": true,
+	"disallowMultipleLineStrings": true,
+	"validateJSDoc": {
+		"checkParamNames": true,
+		"requireParamTypes": true
+	},
+	"disallowImplicitTypeConversion": [
+		"numeric",
+		"boolean",
+		"binary",
+		"string"
+	],
+	"disallowQuotedKeysInObjects": true
+}
