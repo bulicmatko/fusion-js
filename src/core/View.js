@@ -69,13 +69,11 @@ var View = Backbone.View.extend({
 	 *	@param	{string}	name		Template name
 	 *	@param	{function}	template	Compiled Handlebars template
 	 *
-	 *	@return	{object}	this		Instance of this view
+	 *	@return	{object}	template	Compiled Handlebars template
 	 */
 	addTemplate: function (name, template) {
 
-		this.templates[name] = template;
-
-		return this;
+		return this.templates[name] = template;
 
 	},
 
@@ -87,13 +85,11 @@ var View = Backbone.View.extend({
 	 *	@param	{string}	name		Region name
 	 *	@param	{string}	selector	jQuery selector
 	 *
-	 *	@return	{object}	this		Instance of this view
+	 *	@return	{object}	$region		Region as jQuery object
 	 */
 	addRegion: function (name, selector) {
 
-		this.regions[name] = this.$(selector);
-
-		return this;
+		return this.regions[name] = this.$(selector);
 
 	},
 
