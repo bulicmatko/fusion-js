@@ -18,9 +18,6 @@ import Underscore	from 'underscore';
 // Import Backbone
 import Backbone		from 'backbone';
 
-// Import Flux
-import Flux			from 'flux';
-
 // Import DiffDOM
 import DiffDOM		from 'diff-dom';
 
@@ -56,9 +53,6 @@ class Fusion {
 		// Backbone
 		this.Backbone	= Backbone;
 
-		// Flux
-		this.Flux		= Flux;
-
 		// DiffDOM
 		this.DiffDOM	= DiffDOM;
 
@@ -72,9 +66,6 @@ class Fusion {
 		this.Component	= Component;
 		this.Controller	= Controller;
 		this.App		= App;
-
-		// Dispatcher
-		this.Dispatcher	= Flux.Dispatcher;
 
 	}
 

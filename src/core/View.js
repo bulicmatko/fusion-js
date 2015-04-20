@@ -12,7 +12,6 @@ import $		from 'jquery';
 import _		from 'underscore';
 import Backbone	from 'backbone';
 import DiffDom	from 'diff-dom';
-import Flux		from 'flux';
 
 // Add jQuery reference to Backbone.$ variable
 Backbone.$ = $;
@@ -50,16 +49,7 @@ var View = Backbone.View.extend({
 	 *
 	 *	Create DiffDom reference
 	 */
-
 	diffDom: new DiffDom(),
-
-	/**
-	 *	Dispatcher
-	 *
-	 *	Create Flux Dispatcher reference
-	 */
-
-	dispatcher: new Flux.Dispatcher(),
 
 	/**
 	 *	Add Template
