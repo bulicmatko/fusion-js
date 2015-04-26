@@ -65,6 +65,9 @@ class Fusion {
 		this.Controller	= Controller;
 		this.App		= App;
 
+		// Dispatcher
+		this.dispatcher	= _.clone(Backbone.Events);
+
 	}
 
 }
