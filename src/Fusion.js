@@ -10,10 +10,10 @@
 'use strict';
 
 // Import jQuery
-import jQuery		from 'jquery';
+import $			from 'jquery';
 
 // Import Underscore
-import Underscore	from 'underscore';
+import _			from 'underscore';
 
 // Import Backbone
 import Backbone		from 'backbone';
@@ -43,12 +43,10 @@ class Fusion {
 	constructor () {
 
 		// jQuery
-		this.jQuery		= jQuery;
-		this.$			= this.jQuery;
+		this.$			= $;
 
 		// Underscore
-		this.Underscore	= Underscore;
-		this._			= this.Underscore;
+		this._			= _;
 
 		// Backbone
 		this.Backbone	= Backbone;
