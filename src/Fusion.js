@@ -1,74 +1,66 @@
 
 /*------------------------------------------------------------------------------
 
-	Fusion-JS - Simple JavaScript Framework
+    Fusion-JS - Simple JavaScript Framework
 
-	by: Matko Bulic <bulicmatko@gmail.com>
+    by: Matko Bulic <bulicmatko@gmail.com>
 
 ------------------------------------------------------------------------------*/
 
 'use strict';
 
 // Import jQuery
-import $			from 'jquery';
+import $ from 'jquery';
 
 // Import Underscore
-import _			from 'underscore';
+import _ from 'underscore';
 
 // Import Backbone
-import Backbone		from 'backbone';
+import Backbone from 'backbone';
 
-// Import DiffDOM
-import DiffDOM		from 'diff-dom';
+// Import Modules
+import Model        from './Model.js';
+import Collection   from './Collection.js';
+import View         from './View.js';
+import Component    from './Component.js';
+import Controller   from './Controller.js';
+import App          from './App.js';
+import Router       from './Router.js';
 
-// Import Core Modules
-import Model		from './core/Model.js';
-import Collection	from './core/Collection.js';
-import Router		from './core/Router.js';
-import View			from './core/View.js';
-
-// Import Derivative Modules
-import Component	from './derivatives/Component.js';
-import Controller	from './derivatives/Controller.js';
-import App			from './derivatives/App.js';
-
-//
+/**
+ *  Fusion
+ */
 class Fusion {
 
-	/**
-	 * Constructor
-	 *
-	 *	@return	void
-	 */
-	constructor () {
+    /**
+     *  Constructor
+     *  @constructor
+     *
+     *  @return {Object}    this    Fusion instance
+     */
+    constructor () {
 
-		// jQuery
-		this.$			= $;
+        // jQuery
+        this.$ = $;
 
-		// Underscore
-		this._			= _;
+        // Underscore
+        this._ = _;
 
-		// Backbone
-		this.Backbone	= Backbone;
+        // Backbone
+        this.Backbone = Backbone;
 
-		// DiffDOM
-		this.DiffDOM	= DiffDOM;
+        // Modules
+        this.Model      = Model;
+        this.Collection = Collection;
+        this.View       = View;
+        this.Component  = Component;
+        this.Controller = Controller;
+        this.App        = App;
+        this.Router     = Router;
 
-		// Core Modules
-		this.Model		= Model;
-		this.Collection	= Collection;
-		this.Router		= Router;
-		this.View		= View;
+        return this;
 
-		// // Derivative Modules
-		this.Component	= Component;
-		this.Controller	= Controller;
-		this.App		= App;
-
-		// Dispatcher
-		this.dispatcher	= _.clone(Backbone.Events);
-
-	}
+    }
 
 }
 

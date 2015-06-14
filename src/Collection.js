@@ -1,23 +1,22 @@
 
 /*------------------------------------------------------------------------------
 
-	Collection
+    Collection
 
 ------------------------------------------------------------------------------*/
 
 'use strict';
 
-// Import Node Modules
+// Import Backbone
 import Backbone from 'backbone';
 
 /**
- *	Collection
- *
- *	Extended Backbone Collection
+ *  Collection
+ *  Extended Backbone Collection
  */
 var Collection = Backbone.Collection.extend({
 
-	//
+    //
 
 });
 

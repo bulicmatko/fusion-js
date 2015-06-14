@@ -1,19 +1,27 @@
 # EditorConfig helps developers define and maintain consistent
 # coding styles between different editors and IDEs
-# editorconfig.org
+# http://EditorConfig.org
 
 # Project Root
 root = true
 
-[*]
 # Apply to all files
+[*]
 charset = utf-8
 end_of_line = lf
-indent_style = tab
+indent_style = space
 indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.md]
 # Apply to Markdown files
+[*.md]
 trim_trailing_whitespace = false
+
+# Apply to .jscsrc and .jshintrc files
+[.{jscsrc,jshintrc}]
+indent_size = 2
+
+# Apply to package.json file
+[package.json]
+indent_size = 2

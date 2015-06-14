@@ -1,25 +1,24 @@
 
 /*------------------------------------------------------------------------------
 
-	Component
+    Router
 
 ------------------------------------------------------------------------------*/
 
 'use strict';
 
-// Import Modules
-import View from '../core/View.js';
+// Import Backbone
+import Backbone from 'backbone';
 
 /**
- *	Component
- *
- *	Extended Fusion View
+ *  Router
+ *  Extended Backbone Router
  */
-var Component = View.extend({
+var Router = Backbone.Router.extend({
 
-	//
+    //
 
 });
 
-// Export Component
-export default Component;
+// Export Router
+export default Router;
