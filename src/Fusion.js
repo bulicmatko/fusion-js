@@ -35,8 +35,6 @@ class Fusion {
     /**
      *  Constructor
      *  @constructor
-     *
-     *  @return {Object}    this    Fusion instance
      */
     constructor () {
 
@@ -57,8 +55,6 @@ class Fusion {
         this.Controller = Controller;
         this.App        = App;
         this.Router     = Router;
-
-        return this;
 
     }
 

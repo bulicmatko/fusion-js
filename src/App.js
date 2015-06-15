@@ -19,22 +19,17 @@ var App = Controller.extend({
     /**
      *  Constructor
      *  @constructor
-     *
-     *  @param  {arguments} arguments   App arguments
-     *  @return {Object}    this        App constructor
      */
     constructor () {
 
         this.controllers = {};
 
-        this.activeController = {
+        this.mainController = {
             name:   null,
             view:   null
         };
 
         Controller.apply(this, arguments);
-
-        return this;
 
     },
 
@@ -46,7 +41,7 @@ var App = Controller.extend({
      *  @param  {Object}    controller  Controller blueprint
      *  @return {Object}    controller  Controller blueprint
      */
-    addController: function (name, controller) {
+    addController (name, controller) {
 
         return this.controllers[name] = controller;
 
@@ -54,31 +49,64 @@ var App = Controller.extend({
 
     /**
      *  Initialize Controller
-     *  Initialize controller and run method with given data.
+     *  Initialize controller from existing controller blueprints.
+     *
+     *  @param  {string}    name        Controller name
+     *  @param  {Object}    args        Arguments
+     *  @return {Object}    controller  Controller instance
+     */
+    initController (name, args) {
+
+        return this.controllers[name] && (this.addSubview(new this.controllers[name](args)));
+
+    },
+
+    /**
+     *  Set Up Main Controller
+     *  Set up main controller and run method with given data.
      *  If controller is already initialized, just run controller method with given data.
      *
      *  @param  {string}    name            Controller name
      *  @param  {string}    method          Controller method name
      *  @param  {Object}    data            JSON Object
-     *  @return {Object}    controller view Initialized controller instance
+     *  @return {Object}    controller view Initialized controller view instance
      */
-    initController: function (name, method, data) {
+    setupMainController (name, method, data) {
 
-        if (this.activeController.name === name) {
+        if (this.mainController.name === name) {
 
-            this.activeController.view.runMethod(method, data);
+            this.mainController.view[method] && (this.mainController.view[method](data));
 
         } else {
 
-            this.activeController.view && (this.activeController.view.close());
+            this.mainController.view && (this.mainController.view.close());
 
-            this.activeController.view = this.addSubview(new this.controllers[name]({method: method, data: data}));
+            this.mainController.view = this.initController(name, {method: method, data: data});
 
-            this.activeController.name = name;
+            this.mainController.name = name;
 
         }
 
-        return this.activeController.view;
+        return this.mainController.view;
+
+    },
+
+    /**
+     *  Destroy Main Controller
+     *  Destroy main controller.
+     *
+     *  @return {Object}    this    Instance of this controller
+     */
+    destroyMainController () {
+
+        this.mainController.view && (this.mainController.view.close());
+
+        this.mainController = {
+            name: null,
+            view: null
+        };
+
+        return this;
 
     },
 
@@ -89,7 +117,7 @@ var App = Controller.extend({
      *  @param  {string}    name                Controller name
      *  @return {mixed}     undefined or true   Returns true if controller blueprint is succesfully removed
      */
-    removeController: function (name) {
+    removeController (name) {
 
         return this.controllers[name] && (delete this.controllers[name]);
 

@@ -28,9 +28,6 @@ var View = Backbone.View.extend({
     /**
      *  Constructor
      *  @constructor
-     *
-     *  @param  {arguments} arguments   View arguments
-     *  @return {Object}    this        View constructor
      */
     constructor () {
 
@@ -41,13 +38,11 @@ var View = Backbone.View.extend({
 
         Backbone.View.apply(this, arguments);
 
-        return this;
-
     },
 
     /**
      *  Add Template
-     *  Add compiled template to view templates collection.
+     *  Add compiled template to templates collection.
      *
      *  @param  {string}    name        Template name
      *  @param  {function}  template    Compiled template

@@ -19,17 +19,17 @@ var Component = View.extend({
     /**
      *  Constructor
      *  @constructor
-     *
-     *  @param  {arguments} arguments   Component arguments
-     *  @return {Object}    this        Component constructor
      */
     constructor () {
 
         this.components = {};
 
-        View.apply(this, arguments);
+        this.mainComponent = {
+            name:   null,
+            view:   null
+        };
 
-        return this;
+        View.apply(this, arguments);
 
     },
 
@@ -44,6 +44,69 @@ var Component = View.extend({
     addComponent (name, component) {
 
         return this.components[name] = component;
+
+    },
+
+    /**
+     *  Initialize Component
+     *  Initialize component from existing component blueprints.
+     *
+     *  @param  {string}    name        Component name
+     *  @param  {Object}    args        Arguments
+     *  @return {mixed}     componetn   Component instance
+     */
+    initComponent (name, args) {
+
+        return this.components[name] && (this.addSubview(new this.components[name](args)));
+
+    },
+
+    /**
+     *  Set Up Main Component
+     *  Set up main component with given data.
+     *  If component is already initialized, just run component method with given data.
+     *
+     *  @param  {string}    name            Component name
+     *  @param  {string}    method          Component method name
+     *  @param  {Object}    data            JSON Object
+     *  @return {Object}    component view Initialized component view instance
+     */
+    setupMainComponent (name, method, data) {
+
+        if (this.mainComponent.name === name) {
+
+            this.mainComponent.view[method] && (this.mainComponent.view[method](data));
+
+        } else {
+
+            this.mainComponent.view && (this.mainComponent.view.close());
+
+            this.mainComponent.view = this.initComponent(name, {method: method, data: data});
+
+            this.mainComponent.name = name;
+
+        }
+
+        return this.mainComponent.view;
+
+    },
+
+    /**
+     *  Destroy Main Component
+     *  Destroy main component.
+     *
+     *  @return {Object}    this    Instance of this component
+     */
+    destroyMainComponent () {
+
+        this.mainComponent.view && (this.mainComponent.view.close());
+
+        this.mainComponent = {
+            name: null,
+            view: null
+        };
+
+        return this;
 
     },
 
