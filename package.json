@@ -1,6 +1,6 @@
 {
   "name": "fusion-js",
-  "version": "v0.1.0-alpha",
+  "version": "v0.1.1-alpha",
   "description": "Simple JavaScript Framework",
   "main": "./src/Fusion.js",
   "scripts": {
