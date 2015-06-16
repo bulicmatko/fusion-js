@@ -105,11 +105,15 @@ var View = Backbone.View.extend({
      */
     renderTo (region, htmls) {
 
+        this.undelegateEvents();
+
         this.regions[region] && (this.regions[region].empty());
 
         _.each(htmls, (html) => {
             this.regions[region] && (this.regions[region].append(html));
         });
+
+        this.delegateEvents();
 
         return this;
 
