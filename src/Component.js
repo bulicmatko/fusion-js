@@ -53,7 +53,7 @@ var Component = View.extend({
      *
      *  @param  {string}    name        Component name
      *  @param  {Object}    args        Arguments
-     *  @return {mixed}     componetn   Component instance
+     *  @return {mixed}     component   Component instance
      */
     initComponent (name, args) {
 
@@ -63,17 +63,18 @@ var Component = View.extend({
 
     /**
      *  Set Up Main Component
-     *  Set up main component with given data.
+     *  Set up main component, run component method with given data and render it to given region.
      *  If component is already initialized, just run component method with given data.
      *
-     *  @param  {string}    name            Component name
+     *  @param  {string}    region          Region name
+     *  @param  {string}    component       Component name
      *  @param  {string}    method          Component method name
      *  @param  {Object}    data            JSON Object
-     *  @return {Object}    component view Initialized component view instance
+     *  @return {Object}    component view  Initialized component view instance
      */
-    setupMainComponent (name, method, data) {
+    setupMainComponent (region, component, method, data) {
 
-        if (this.mainComponent.name === name) {
+        if (this.mainComponent.name === component) {
 
             this.mainComponent.view[method] && (this.mainComponent.view[method](data));
 
@@ -81,9 +82,12 @@ var Component = View.extend({
 
             this.mainComponent.view && (this.mainComponent.view.close());
 
-            this.mainComponent.view = this.initComponent(name, {method: method, data: data});
+            this.mainComponent = {
+                name:   component,
+                view:   this.initComponent(component, {method: method, data: data})
+            };
 
-            this.mainComponent.name = name;
+            this.renderTo(region, [this.mainComponent.view.el]);
 
         }
 
@@ -102,8 +106,8 @@ var Component = View.extend({
         this.mainComponent.view && (this.mainComponent.view.close());
 
         this.mainComponent = {
-            name: null,
-            view: null
+            name:   null,
+            view:   null
         };
 
         return this;

@@ -63,17 +63,18 @@ var App = Controller.extend({
 
     /**
      *  Set Up Main Controller
-     *  Set up main controller and run method with given data.
+     *  Set up main controller, run controller method with given data and render it to given region.
      *  If controller is already initialized, just run controller method with given data.
      *
-     *  @param  {string}    name            Controller name
+     *  @param  {string}    region          Region name
+     *  @param  {string}    controller      Controller name
      *  @param  {string}    method          Controller method name
      *  @param  {Object}    data            JSON Object
      *  @return {Object}    controller view Initialized controller view instance
      */
-    setupMainController (name, method, data) {
+    setupMainController (region, controller, method, data) {
 
-        if (this.mainController.name === name) {
+        if (this.mainController.name === controller) {
 
             this.mainController.view[method] && (this.mainController.view[method](data));
 
@@ -81,9 +82,12 @@ var App = Controller.extend({
 
             this.mainController.view && (this.mainController.view.close());
 
-            this.mainController.view = this.initController(name, {method: method, data: data});
+            this.mainController = {
+                name:   controller,
+                view:   this.initController(controller, {method: method, data: data})
+            };
 
-            this.mainController.name = name;
+            this.renderTo(region, [this.mainController.view.el]);
 
         }
 
@@ -102,8 +106,8 @@ var App = Controller.extend({
         this.mainController.view && (this.mainController.view.close());
 
         this.mainController = {
-            name: null,
-            view: null
+            name:   null,
+            view:   null
         };
 
         return this;
