@@ -33,7 +33,7 @@ var View = Backbone.View.extend({
 
         this.templates  = {};
         this.regions    = {};
-        this.subviews   = [];
+        this.subviews   = {};
         this.deferreds  = [];
 
         Backbone.View.apply(this, arguments);
@@ -137,15 +137,11 @@ var View = Backbone.View.extend({
      */
     addSubview (view) {
 
-        var index = this.subviews.length;
-
-        this.subviews.push(view);
+        this.subviews[view.cid] = view;
 
         view.model && (this.listenTo(view.model, 'destroy', view.close));
 
-        view.on('close', () => {
-            this.subviews.splice(index, 1);
-        });
+        view.on('close', () => { delete this.subviews[view.cid]; });
 
         return view;
 
@@ -160,13 +156,7 @@ var View = Backbone.View.extend({
      */
     addDeferred (deferred) {
 
-        var index = this.deferreds.length;
-
         this.deferreds.push(deferred);
-
-        deferred.always(() => {
-            this.deferreds.splice(index, 1);
-        });
 
         return deferred;
 
@@ -181,8 +171,8 @@ var View = Backbone.View.extend({
         _.invoke(this.subviews, 'close');
         _.invoke(this.deferreds, 'abort');
 
-        this.remove();
         this.trigger('close');
+        this.remove();
 
     }
 
